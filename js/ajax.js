@@ -3,13 +3,19 @@ var m_total_name, m_name0, m_name1, m_name2, m_name3, m_name4, m_name5;
 var arrayName = [];
 var obj;
 var aver, real;
+var clipStep = 0,
+	clipStep2 = 0;
+var transToRight = 0,
+	transToBottom = 0;
 $(function() {
 
 	requestAjax();
 	type = 1;
-		setInterval('clock()', 5000);
-	setInterval('requestAjax()', 600000);
-	setInterval('requestAjaxFast()', 600000);
+	changeType();
+	setInterval('clock()', 5000);
+	setInterval('requestAjax()', 60000);
+	setInterval('requestAjaxFast()', 60000);
+	setInterval('transitionAnim()', 100);
 });
 var datasPie = new Array();
 
@@ -19,7 +25,6 @@ function clock() {
 	}
 	type++;
 	changeType();
-
 }
 
 function requestAjaxFast() {
@@ -47,7 +52,6 @@ function requestAjax() {
 		crossDomain: true,
 		dataType: "json",
 		success: function(data) {
-			//			console.log(data);
 			changeData(data);
 			changeType();
 		},
@@ -102,8 +106,11 @@ function changeType() {
 
 	//	alert('type='+type);
 	datasPie = [];
-	$('.data-num .num').removeClass('selected');
-	$('.data-num .num:eq(' + (type - 1) + ')').addClass('selected').addClass('a-shake');
+	$('.data-num .num').removeClass('selected-font');
+	$('.data-num .num:eq(' + (type - 1) + ')').addClass('selected-font');
+	//14.3 28.6
+	$('.selected2').css('left', ((type - 1) * 14.3) + '%');
+
 	//	$('#affiche').html('');
 	$('.hangye').html('');
 	//todo
@@ -113,9 +120,10 @@ function changeType() {
 	if (type == 1) {
 		mar_names = m_total_name;
 	} else {
-		//		alert(arrayName[index]);
-		//		$('#affiche').html(arrayName[index]);
 		mar_names = arrayName[index]
+	}
+	if (typeof(mar_names) == 'undefined') {
+		mar_names = '暂时没有获取到数据，请检查网络';
 	}
 	var marquee = '<marquee id="affiche" align="left" behavior="scroll" direction="up" height="400" width="200" hspace="0" vspace="0" loop="-1" scrollamount="8" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">';
 	marquee += mar_names + '</marquee>';
@@ -243,4 +251,86 @@ function changeType() {
 		showBar(0, 0, 13, 5);
 	}
 
+}
+
+function transitionAnim() {
+	//	0-75%
+	if (clipStep > 74) {
+		if (transToRight == 1) {
+			transToRight = 0;
+		} else {
+			transToRight = 1;
+		}
+
+	}
+	if (clipStep < 1) {
+		transToRight = 0;
+	}
+	//	if (transToRight == 0) {
+	//		clipStep++;
+	//	} else {
+	//		clipStep--;
+	//	}
+	//	
+
+	if (clipStep2 > 43) {
+		if (transToBottom == 1) {
+			transToBottom = 0;
+		} else {
+			transToBottom = 1;
+		}
+	}
+	if (clipStep2 < 1) {
+		transToBottom = 0;
+	}
+	//	if (transToBottom == 0) {
+	//		clipStep2++;
+	//	} else {
+	//		clipStep2--;
+	//	}
+
+	//top
+	if (transToRight == 0 && transToBottom == 0) {
+		$('.top-clip').css('display', 'block');
+		$('.bottom-clip').css('display', 'none');
+		$('.right-clip').css('display', 'none');
+		$('.left-clip').css('display', 'none');
+		//		transToRight = 1;
+		clipStep2 = 1;
+		clipStep++;
+		$('.top-clip').css('left', clipStep + '%');
+	}
+	//right
+	if (transToRight == 1 && transToBottom == 0) {
+		$('.top-clip').css('display', 'none');
+		$('.bottom-clip').css('display', 'none');
+		$('.right-clip').css('display', 'block');
+		$('.left-clip').css('display', 'none');
+		clipStep = 1;
+		//		transToBottom = 1;
+		clipStep2++;
+		$('.right-clip').css('top', clipStep2 + '%');
+	}
+	//bottom
+	if (transToRight == 1 && transToBottom == 1) {
+		$('.top-clip').css('display', 'none');
+		$('.bottom-clip').css('display', 'block');
+		$('.right-clip').css('display', 'none');
+		$('.left-clip').css('display', 'none');
+		//		transToBottom = 0;
+		clipStep2 = 1;
+		clipStep++;
+		$('.bottom-clip').css('right', clipStep + '%');
+	}
+	//left
+	if (transToRight == 0 && transToBottom == 1) {
+		$('.top-clip').css('display', 'none');
+		$('.bottom-clip').css('display', 'none');
+		$('.right-clip').css('display', 'none');
+		$('.left-clip').css('display', 'block');
+		//		transToRight = 0;
+		clipStep = 1;
+		clipStep2++;
+		$('.left-clip').css('bottom', clipStep2 + '%');
+	}
 }

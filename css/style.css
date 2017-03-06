@@ -175,10 +175,10 @@ textarea {
 	font-size: 22px;
 	text-align: center;
 	vertical-align: middle;
-	/*width: 170px;*/
-	margin-left: 16px;
+	/*margin-left: 16px;*/
 	color: #2985F2;
 	height: 70px;
+	width: 170px;
 	/*background: url(../img/bg_data.png) no-repeat;*/
 	border: 2px solid #0E485C;
 	border-radius: 5px;
@@ -222,6 +222,7 @@ textarea {
 	background-position: center;
 	/*border: 1px #1D2835 solid;*/
 	border: 1px #284058 solid;
+	/*overflow: hidden;*/
 }
 
 .data-map {
@@ -268,33 +269,36 @@ textarea {
 	box-shadow: 0 0 10px #7E6410;
 	-webkit-box-shadow: 0 0 15px #7E6410;
 	-moz-box-shadow: 0 0 15px #7E6410;
-	-webkit-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-moz-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-o-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-ms-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	transition: all 400ms cubic-bezier(.16, 1.23, .87, 1.18);
 }
+
 .selected2 {
 	/*background: url(../img/bg_data_sel.png) no-repeat !important;*/
 	position: absolute;
-	top:45px;
-	width: 13.34%;
+	top: 45px;
+	/*width: 13.34%;*/
+	width: 170px;
 	height: 70px;
-	left: 0.63%;
+	/*left: 0.63%;*/
 	border: 2px solid #7E6410 !important;
-	color: #D4B316 !important;
+	border-radius: 5px;
 	/*transition: all 1s ease-in-out;
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;*/
 	box-shadow: 0 0 10px #7E6410;
 	-webkit-box-shadow: 0 0 15px #7E6410;
 	-moz-box-shadow: 0 0 15px #7E6410;
-	-webkit-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-moz-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-o-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	-ms-transition: all 400ms cubic-bezier(.45, 1.92, .9, 1.54);
-	transition: all 400ms cubic-bezier(.16, 1.23, .87, 1.18);
+	-webkit-transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+	-moz-transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+	-o-transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+	-ms-transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+	transition: all 400ms cubic-bezier(0, 0, 0.58, 1.0);
+	/*(0.42, 0, 0.58, 1.0)   (.16, 1.23, .87, 1.18)*/
 }
+
+.selected-font {
+	color: #D4B316 !important;
+}
+
 .a-shake {
 	-webkit-animation-name: shake;
 	-moz-animation-name: shake;
@@ -311,38 +315,71 @@ textarea {
 		margin-left: 0px;
 	}
 	.data-num .num {
-		width: 80%;
+		width: 136px;
+	}
+	.selected2 {
+		width: 136px;
 	}
 	.content .left {
 		position: absolute;
-		width: 300px;
-		/*display: flex;*/
+		width: 400px;
 	}
 	.content .right {
 		/*float: left;*/
-		margin-left: 300px;
+		margin-left: 400px;
 	}
 	.div-container-line {
-		width: 300px;
+		width: 400px;
 	}
 	.data-num .num span {
 		font-size: 20px;
 	}
 }
 
+.top-clip {
+	position: absolute;
+	top: -9px;
+	left: -30px;
+	-webkit-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-moz-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-o-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-ms-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	display: none;
+}
 
- .wine:hover ~ .selected {
- left: 25.5%;
+.bottom-clip {
+	position: absolute;
+	bottom: -9px;
+	right: -30px;
+	-webkit-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-moz-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-o-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-ms-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	display: none;
 }
-.burger:hover ~ .selected {
- left: 42%;
+
+.left-clip {
+	position: absolute;
+	bottom: -30px;
+	left: -10px;
+	-webkit-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-moz-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-o-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-ms-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	display: none;
 }
-.comment:hover ~ .selected {
- left: 58.5%;
-}
-.sport:hover ~ .selected {
- left: 75%;
-}
-.earth:hover ~ .selected {
- left: 91.1%;
+
+.right-clip {
+	position: absolute;
+	top: -70px;
+	right: -8px;
+	-webkit-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-moz-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-o-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	-ms-transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	transition: all 5ms cubic-bezier(0.0, 0.0, 1.0, 1.0);
+	display: none;
 }
