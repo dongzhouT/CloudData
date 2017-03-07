@@ -28,6 +28,7 @@ function showChart(param1, param2) {
 			plotShadow: false,
 			type: 'pie',
 			backgroundColor: "#0f0f11",
+			marginTop: 30
 		},
 		title: {
 			text: param1 + param2,
@@ -35,7 +36,7 @@ function showChart(param1, param2) {
 				color: '#fff',
 				fontSize: '24px',
 			},
-			y: -70,
+			y: -40,
 			verticalAlign: 'middle',
 		},
 		subtitle: {
@@ -45,7 +46,7 @@ function showChart(param1, param2) {
 				fontSize: '14px',
 			},
 			verticalAlign: 'bottom',
-			y: -100
+			y: -70
 		},
 		tooltip: {
 			enabled: false,
@@ -53,7 +54,7 @@ function showChart(param1, param2) {
 		},
 		plotOptions: {
 			pie: {
-				size: 115,
+				size: 100,
 				allowPointSelect: true,
 				cursor: 'pointer',
 				dataLabels: {
@@ -80,6 +81,7 @@ function showChart(param1, param2) {
 				dataLabels: {
 					enable: true,
 					style: {
+						fontSize: '10px',
 						textOutline: "0px 0x contrast"
 					}
 				}
@@ -107,7 +109,7 @@ function showChart(param1, param2) {
 				'fontSize': '11px',
 				'color': '#A0A0A0'
 			},
-			y: -120,
+			y: -80,
 			symbolRadius: 0
 		}
 	});
@@ -115,9 +117,9 @@ function showChart(param1, param2) {
 }
 
 function showChartSingle(param, subtitle, sum, offsetY) {
-	var offsetY = -120;
+	var offsetY = -90;
 	if (subtitle == "") {
-		offsetY = -90;
+		offsetY = -45;
 		// Build the chart
 		$('#container_pie_single').highcharts({
 			chart: {
@@ -126,14 +128,8 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 				plotShadow: false,
 				type: 'pie',
 				backgroundColor: "#0f0f11",
+				marginTop: 30
 			},
-			//			colors: ['#FC2020',
-			//				'#FEA724',
-			//				'#D1FE0D',
-			//				'#3AFF0B',
-			//				'#0CFEFF',
-			//				'#CF15FF'
-			//			],
 			colors: ['#BC2D05',
 				'#D16004',
 				'#DB7604',
@@ -147,7 +143,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 					color: '#fff',
 					fontSize: '24px',
 				},
-				y: -70,
+				y: -45,
 				verticalAlign: 'middle',
 			},
 			subtitle: {
@@ -157,7 +153,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 					fontSize: '14px',
 				},
 				verticalAlign: 'bottom',
-				y: -100
+				y: -70
 			},
 			tooltip: {
 				enabled: false,
@@ -165,7 +161,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 			},
 			plotOptions: {
 				pie: {
-					size: 115,
+					size: 100,
 					allowPointSelect: true,
 					cursor: 'pointer',
 					dataLabels: {
@@ -195,6 +191,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 				dataLabels: {
 					enable: true,
 					style: {
+						fontSize: '10px',
 						textOutline: "0px 0x contrast"
 					}
 				}
@@ -204,7 +201,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 			},
 			legend: {
 				itemStyle: {
-					'fontSize': '12px',
+					'fontSize': '11px',
 					'color': '#A0A0A0'
 				},
 				symbolRadius: 0,
@@ -220,6 +217,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 				plotShadow: false,
 				type: 'pie',
 				backgroundColor: "#0f0f11",
+				marginTop: 30
 			},
 			colors: ['#F4D012',
 				'#3B3B3B',
@@ -234,7 +232,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 					color: '#fff',
 					fontSize: '24px',
 				},
-				y: -70,
+				y: -40,
 				verticalAlign: 'middle',
 			},
 			subtitle: {
@@ -244,7 +242,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 					fontSize: '14px',
 				},
 				verticalAlign: 'bottom',
-				y: -100
+				y: -70
 			},
 			tooltip: {
 				enabled: false,
@@ -252,7 +250,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 			},
 			plotOptions: {
 				pie: {
-					size: 115,
+					size: 100,
 					allowPointSelect: true,
 					cursor: 'pointer',
 					dataLabels: {
@@ -282,6 +280,7 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 				dataLabels: {
 					enable: true,
 					style: {
+						fontSize: '10px',
 						textOutline: "0px 0x contrast"
 					}
 				}
@@ -291,11 +290,11 @@ function showChartSingle(param, subtitle, sum, offsetY) {
 			},
 			legend: {
 				itemStyle: {
-					'fontSize': '12px',
+					'fontSize': '11px',
 					'color': '#A0A0A0'
 				},
 				symbolRadius: 0,
-				y: offsetY
+				y: -80
 			}
 		});
 	}

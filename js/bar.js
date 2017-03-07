@@ -81,7 +81,8 @@ function showBar(param1, param2, param3, param4) {
 		plotOptions: {
 			column: {
 				pointPadding: 0.2,
-				borderWidth: 0
+				borderWidth: 0,
+				pointWidth: 50
 			},
 			series: {
 				colorByPoint: true,
