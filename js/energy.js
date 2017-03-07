@@ -2,11 +2,11 @@ var gaugeOptions = {
 
 	chart: {
 		type: 'solidgauge',
-		backgroundColor: "#0f0f11",
+		backgroundColor: "#0f0f11"
 	},
 	pane: {
 		center: ['50%', '60%'],
-		size: '68%',
+		size: '60%',
 		startAngle: -90,
 		endAngle: 90,
 		background: {
@@ -40,12 +40,12 @@ var gaugeOptions = {
 		tickPixelInterval: 400,
 		tickWidth: 0,
 		title: {
-			y: -60
+			y: -45
 		},
 		labels: {
 			y: 16,
 			enable: false,
-		},
+		}
 	},
 	credits: {
 		enabled: false
@@ -55,10 +55,10 @@ var gaugeOptions = {
 			dataLabels: {
 				y: 10,
 				borderWidth: 0,
-				useHTML: true
+				useHTML: true,
+				enabled: false
 			}
-		},
-		borderWidth: 0
+		}
 	},
 	label: {
 		enable: false
@@ -73,17 +73,18 @@ function showEnergy(param1, param2) {
 	// 平均能效
 	$('#container_energy_ave').highcharts(Highcharts.merge(gaugeOptions, {
 		yAxis: {
-			min: 11,
-			max: 12,
+			min: 9,
+			max: 10,
 			title: {
 				text: param1,
 				style: {
 					color: '#2985F2',
 					fontSize: 24
-				}
+				},
+				//				y:-30
 			},
 			labels: {
-				y: 10,
+				y: 20,
 				enabled: false,
 			}
 		},
@@ -116,8 +117,8 @@ function showEnergy(param1, param2) {
 	//即时能效
 	$('#container_energy_imme').highcharts(Highcharts.merge(gaugeOptions, {
 		yAxis: {
-			min: 10.5,
-			max: 13,
+			min: 10,
+			max: 11.5,
 			title: {
 				text: param2,
 				style: {

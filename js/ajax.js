@@ -7,15 +7,16 @@ var clipStep = 0,
 	clipStep2 = 0;
 var transToRight = 0,
 	transToBottom = 0;
+var duration = 5000;
 $(function() {
 
 	requestAjax();
 	type = 1;
 	changeType();
-	setInterval('clock()', 5000);
-	setInterval('requestAjax()', 60000);
-	setInterval('requestAjaxFast()', 60000);
-	setInterval('transitionAnim()', 100);
+	setInterval('clock()', duration);
+	//		setInterval('requestAjax()', 1000);
+	setInterval('requestAjaxFast()', 2000);
+	setInterval('transitionAnimTwo()', 40);
 });
 var datasPie = new Array();
 
@@ -113,8 +114,8 @@ function changeType() {
 
 	//	$('#affiche').html('');
 	$('.hangye').html('');
-	//todo
-	//	showEnergy(aver, real);
+	//即时能效
+	showEnergy(aver, real);
 	var index = type - 2;
 	var mar_names = '';
 	if (type == 1) {
@@ -125,13 +126,14 @@ function changeType() {
 	if (typeof(mar_names) == 'undefined') {
 		mar_names = '暂时没有获取到数据，请检查网络';
 	}
-	var marquee = '<marquee id="affiche" align="left" behavior="scroll" direction="up" height="400" width="200" hspace="0" vspace="0" loop="-1" scrollamount="8" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">';
+	var marquee = '<marquee id="affiche" align="left" behavior="scroll" direction="up" height="400" width="250" hspace="0" vspace="0" loop="-1" scrollamount="8" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">';
 	marquee += mar_names + '</marquee>';
 	$('.hangye').html(marquee);
+	duration = 5000;
 
 	if (type == 1) {
 		var item = new Object();
-		item.name = "酒店";
+		item.name = '酒店　　';
 		item.y = 45;
 		datasPie.push(item);
 
@@ -141,7 +143,7 @@ function changeType() {
 		datasPie.push(item2);
 
 		var item3 = new Object();
-		item3.name = "办公";
+		item3.name = "办公　　";
 		item3.y = 72;
 		datasPie.push(item3);
 
@@ -149,20 +151,19 @@ function changeType() {
 		item4.name = "工厂";
 		item4.y = 144;
 		datasPie.push(item4);
-
 		var item5 = new Object();
 		item5.name = "数据中心";
 		item5.y = 12;
 		datasPie.push(item5);
-
 		var item6 = new Object();
 		item6.name = "其他";
 		item6.y = 24;
 		datasPie.push(item6);
+
 		showChartSingle(datasPie, '', 312); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-总数.png');
-		$('#line-img').attr('src', 'img/总-不带刻度.png');
-		showBar(0, 0, 130, 88);
+		//		$('#line-img').attr('src', 'img/总-不带刻度.png');
+		showBar(9, 0, 130, 88);
 	} else
 	if (type == 2) {
 		var item = new Object();
@@ -176,8 +177,8 @@ function changeType() {
 		datasPie.push(item2);
 		showChartSingle(datasPie, '酒店行业项目', 45); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-酒店.png');
-		$('#line-img').attr('src', 'img/酒店-不带刻度.png');
-		showBar(0, 0, 22, 9);
+		//		$('#line-img').attr('src', 'img/酒店-不带刻度.png');
+		showBar(2, 0, 22, 9);
 	} else if (type == 3) {
 		var item = new Object();
 		item.name = "在线";
@@ -190,7 +191,7 @@ function changeType() {
 		datasPie.push(item2);
 		showChartSingle(datasPie, '医院行业项目', 15); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-医院.png');
-		$('#line-img').attr('src', 'img/医院-不带刻度.png');
+		//		$('#line-img').attr('src', 'img/医院-不带刻度.png');
 		showBar(0, 0, 7, 3);
 	} else if (type == 4) {
 		var item = new Object();
@@ -205,8 +206,8 @@ function changeType() {
 
 		showChartSingle(datasPie, '办公行业项目', 72); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-办公.png');
-		$('#line-img').attr('src', 'img/办公-不带刻度.png');
-		showBar(0, 0, 34, 16);
+		//		$('#line-img').attr('src', 'img/办公-不带刻度.png');
+		showBar(2, 0, 34, 16);
 	} else if (type == 5) {
 		var item = new Object();
 		item.name = "在线";
@@ -219,8 +220,8 @@ function changeType() {
 		datasPie.push(item2);
 		showChartSingle(datasPie, '工厂行业项目', 144); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-工厂.png');
-		$('#line-img').attr('src', 'img/工厂-不带刻度.png');
-		showBar(0, 0, 71, 30);
+		//		$('#line-img').attr('src', 'img/工厂-不带刻度.png');
+		showBar(5, 0, 71, 30);
 	} else if (type == 6) {
 		var item = new Object();
 		item.name = "在线";
@@ -233,7 +234,7 @@ function changeType() {
 		datasPie.push(item2);
 		showChartSingle(datasPie, '数据中心行业项目', 12); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-数据中心.png');
-		$('#line-img').attr('src', 'img/数据中心-不带刻度.png');
+		//		$('#line-img').attr('src', 'img/数据中心-不带刻度.png');
 		showBar(0, 0, 5, 3);
 	} else if (type == 7) {
 		var item = new Object();
@@ -247,8 +248,9 @@ function changeType() {
 		datasPie.push(item2);
 		showChartSingle(datasPie, '其他', 24); //-50无标题  -80 有标题
 		$('#data-map').attr('src', 'img/地图-其他.png');
-		$('#line-img').attr('src', 'img/其他-不带刻度.png');
+		//		$('#line-img').attr('src', 'img/其他-不带刻度.png');
 		showBar(0, 0, 13, 5);
+		duration = 10000;
 	}
 
 }
@@ -332,5 +334,80 @@ function transitionAnim() {
 		clipStep = 1;
 		clipStep2++;
 		$('.left-clip').css('bottom', clipStep2 + '%');
+	}
+}
+
+function transitionAnimTwo() {
+	//	0-75%
+	if (clipStep > 70) {
+		if (transToRight == 1) {
+			transToRight = 0;
+		} else {
+			transToRight = 1;
+		}
+
+	}
+	if (clipStep < 1) {
+		transToRight = 0;
+	}
+
+	if (clipStep2 > 43) {
+		if (transToBottom == 1) {
+			transToBottom = 0;
+		} else {
+			transToBottom = 1;
+		}
+	}
+	if (clipStep2 < 1) {
+		transToBottom = 0;
+	}
+
+	//top
+	if (transToRight == 0 && transToBottom == 0) {
+		$('.top-clip').css('display', 'block');
+		$('.bottom-clip').css('display', 'block');
+		$('.right-clip').css('display', 'none');
+		$('.left-clip').css('display', 'none');
+		//		transToRight = 1;
+		clipStep2 = 1;
+		clipStep++;
+		$('.top-clip').css('left', clipStep + '%');
+		$('.bottom-clip').css('right', clipStep + '%');
+	}
+	//right
+	if (transToRight == 1 && transToBottom == 0) {
+		$('.top-clip').css('display', 'none');
+		$('.bottom-clip').css('display', 'none');
+		$('.right-clip').css('display', 'block');
+		$('.left-clip').css('display', 'block');
+		clipStep = 1;
+		//		transToBottom = 1;
+		clipStep2++;
+		$('.left-clip').css('bottom', clipStep2 + '%');
+		$('.right-clip').css('top', clipStep2 + '%');
+	}
+	//bottom
+	if (transToRight == 1 && transToBottom == 1) {
+		$('.top-clip').css('display', 'block');
+		$('.bottom-clip').css('display', 'block');
+		$('.right-clip').css('display', 'none');
+		$('.left-clip').css('display', 'none');
+		//		transToBottom = 0;
+		clipStep2 = 1;
+		clipStep++;
+		$('.top-clip').css('left', clipStep + '%');
+		$('.bottom-clip').css('right', clipStep + '%');
+	}
+	//left
+	if (transToRight == 0 && transToBottom == 1) {
+		$('.top-clip').css('display', 'none');
+		$('.bottom-clip').css('display', 'none');
+		$('.right-clip').css('display', 'block');
+		$('.left-clip').css('display', 'block');
+		//		transToRight = 0;
+		clipStep = 1;
+		clipStep2++;
+		$('.left-clip').css('bottom', clipStep2 + '%');
+		$('.right-clip').css('top', clipStep2 + '%');
 	}
 }
